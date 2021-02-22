@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Map;
 
 @SuppressWarnings("unchecked")
 public class Memo_List extends AppCompatActivity {
@@ -43,12 +44,13 @@ public class Memo_List extends AppCompatActivity {
         Context context = this;
 
         helper = new Helper(this);
-        ArrayList arrayList = helper.getAll();
+        ArrayList<Map<String, String>> arrayList = helper.getAll();
         addButton = findViewById(R.id.add_button);
         btn_listImageButton = findViewById(R.id.btn_listImage);
 
         Log.d("db쿼리 결과", arrayList.toString());
 
+        // adapter = new CustomAdapter
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         listView = findViewById(R.id.memo_list);
         listView.setAdapter(adapter);
@@ -70,8 +72,7 @@ public class Memo_List extends AppCompatActivity {
                             Toast.makeText(Memo_List.this, "메모를 수정하세요", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(getApplicationContext(), Memo_AddPage.class);
-                            //intent.putExtras(bundle);
-
+                            intent.putExtras(bundle);
                             startActivity(intent);
                         }
                     });
@@ -79,17 +80,22 @@ public class Memo_List extends AppCompatActivity {
             dialog.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // **
-                    adapter.remove(helper.delete(listView.getSelectedItemPosition()+1));
+                    Log.d("id",String.valueOf(id));
 
 
-                    Toast.makeText(Memo_List.this, "삭제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                    Log.d("Database", helper.getAll().toString());
+                    // database 영역
+                    helper.delete(id);
+                    Log.d("Database", helper.getAll().toString());
+
+                    // view 영역
+                    Log.d("arrayList",arrayList.toString());
+                    arrayList.remove(id);
+                    Log.d("arrayList",arrayList.toString());
 
                     adapter.notifyDataSetChanged();
 
-                    //notifyDataSetChanged()로 바로 반영이 되지 않아 list activity 재시작
-                    Intent intent = new Intent(context, Memo_List.class);
-                    startActivity(intent);
+                    Toast.makeText(Memo_List.this, "삭제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
                 }
             });
             dialog.create();

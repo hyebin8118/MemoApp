@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Helper extends SQLiteOpenHelper {
 
@@ -86,11 +88,15 @@ public class Helper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         return sqLiteDatabase.delete("MemoList", "id=?", new String []
-                {Integer.toString(id)});
+                        {Integer.toString(id)});
     }
 
     public ArrayList getAll(){
-        ArrayList arrayList = new ArrayList();
+        /* 객체
+        *  id : ?
+        *  title text : ?
+        * */
+        ArrayList arrayList = new ArrayList<Map<String, String>>();
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         Cursor cursor = sqLiteDatabase.rawQuery("select*from "+ DATABASE_TABLE_NAME, null);
@@ -98,7 +104,15 @@ public class Helper extends SQLiteOpenHelper {
         cursor.moveToFirst();
 
         while(cursor.isAfterLast() == false){
-            arrayList.add(cursor.getString(cursor.getColumnIndex(DATABASE_COLUMN_TITLE_TEXT)));
+
+            HashMap<String, String> id_text_map = new HashMap<>();
+
+            id_text_map.put(
+                    cursor.getString(cursor.getColumnIndex(DATABASE_COLUMN_ID)),
+                    cursor.getString(cursor.getColumnIndex(DATABASE_COLUMN_TITLE_TEXT))
+            );
+
+            arrayList.add(id_text_map);
             cursor.moveToNext();
         }
 
