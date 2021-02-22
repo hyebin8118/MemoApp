@@ -64,9 +64,10 @@ public class MainActivity extends AppCompatActivity{
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
-                                Toast.makeText(MainActivity.this, "이동 완료", Toast.LENGTH_LONG).show();
+
                                 Intent intent = new Intent(context, Memo_List.class);
                                 startActivity(intent);
+                                Toast.makeText(MainActivity.this, "이동 완료", Toast.LENGTH_LONG).show();
                             }
                  });
 

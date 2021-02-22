@@ -87,7 +87,6 @@ public class Helper extends SQLiteOpenHelper {
 
         return sqLiteDatabase.delete("MemoList", "id=?", new String []
                 {Integer.toString(id)});
-        //DATABASE_NAME.execSQL("delete from MemoApp.db where id = '"+id+"';");
     }
 
     public ArrayList getAll(){

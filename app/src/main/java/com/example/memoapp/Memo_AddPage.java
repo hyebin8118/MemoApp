@@ -132,9 +132,10 @@ public class Memo_AddPage extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
-                                Toast.makeText(Memo_AddPage.this, "이동하였습니다.", Toast.LENGTH_LONG).show();
+
                                 Intent intent = new Intent(context, Memo_List.class);
                                 startActivity(intent);
+                                Toast.makeText(Memo_AddPage.this, "이동하였습니다.", Toast.LENGTH_LONG).show();
                             }
                         });
 

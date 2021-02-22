@@ -82,14 +82,17 @@ public class Memo_List extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     //
+                    helper.delete(id);
                     adapter.remove(id);
-
 
                     Toast.makeText(Memo_List.this, "삭제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
                     adapter.notifyDataSetChanged();
                 }
             });
+            dialog.create();
+            dialog.show();
+            Log.d("this","Success");
         });
 
         addButton.setOnClickListener(new View.OnClickListener(){
