@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF0F5">
+
+
+    <!--상단 바-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="#FFE65A">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/list_icon"
+            android:id="@+id/btn_listImage"
+            android:background="@null"
+            />
+
+
+        <!--검색창-->
+
+        <ImageView
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/search_icon" />
+
+        <EditText
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:background="#FFF56E"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:layout_marginTop="7px"
+            android:layout_marginBottom="7px">
+
+        </EditText>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:padding="8dp"
+            android:src="@drawable/setting_icon"/>
+    </LinearLayout>
+
+    <!--under bar-->
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF0F5">
+
+        <Button
+            android:id="@+id/listAddButton"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="305dp"
+            android:background="#FFF0F5"
+            android:text="+" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:src="@drawable/user_icon" />
+    </LinearLayout>
+-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FAFAD2">
+
+
+        <!--plus Button-->
+        <Button
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="+"
+            android:textAlignment="center"
+            android:background="@drawable/border"
+            android:textSize="150dp"
+            android:textStyle="bold"
+            android:textColor="#D7A35D"
+            android:onClick="click"
+            android:id="@+id/plusButton"
+            >
+        </Button>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:text="메모를 입력하세요!"
+            android:textStyle="bold"
+            android:textColor="#D7A35D"
+            android:textSize="30dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+</LinearLayout>
