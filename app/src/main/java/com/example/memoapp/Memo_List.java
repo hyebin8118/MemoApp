@@ -72,7 +72,7 @@ public class Memo_List extends AppCompatActivity {
                             Toast.makeText(Memo_List.this, "메모를 수정하세요", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(getApplicationContext(), Memo_AddPage.class);
-                            intent.putExtras(bundle);
+                            //intent.putExtras(bundle);
 
                             startActivity(intent);
                         }
@@ -81,13 +81,17 @@ public class Memo_List extends AppCompatActivity {
             dialog.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    //
-                    helper.delete(id);
-                    adapter.remove(id);
+                    // **
+                    helper.delete(listView.getSelectedItemPosition());
+                    adapter.remove(listView.getSelectedItem());
 
                     Toast.makeText(Memo_List.this, "삭제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
                     adapter.notifyDataSetChanged();
+
+                    //notifyDataSetChanged()로 바로 반영이 되지 않아 list activity 재시작
+                    Intent intent = new Intent(context, Memo_List.class);
+                    startActivity(intent);
                 }
             });
             dialog.create();
