@@ -114,28 +114,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="#FFFA82"
-            android:layout_toLeftOf="@+id/standardButton"
-            android:text="추가" />
-
-        <Button
-            android:id="@+id/standardButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="stan"
-            android:visibility="invisible"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_delete"
-            android:text="삭제"
-            android:layout_alignParentBottom="true"
-            android:background="#FFFA82"
-            android:layout_toRightOf="@+id/standardButton"
-            android:layout_centerHorizontal="true"
-            />
+            android:text="추가"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 </LinearLayout>

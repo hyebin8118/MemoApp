@@ -31,7 +31,6 @@ public class Memo_List extends AppCompatActivity {
     private ListView listView;
     private Button addButton;
     ArrayAdapter adapter;
-    private Button list_delete;
     private ImageButton btn_listImageButton;
 
     final Context context = this;
@@ -46,7 +45,6 @@ public class Memo_List extends AppCompatActivity {
         helper = new Helper(this);
         ArrayList arrayList = helper.getAll();
         addButton = findViewById(R.id.add_button);
-        list_delete = findViewById(R.id.list_delete);
         btn_listImageButton = findViewById(R.id.btn_listImage);
 
         Log.d("db쿼리 결과", arrayList.toString());
@@ -82,8 +80,8 @@ public class Memo_List extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // **
-                    helper.delete(listView.getSelectedItemPosition());
-                    adapter.remove(listView.getSelectedItem());
+                    adapter.remove(helper.delete(listView.getSelectedItemPosition()+1));
+
 
                     Toast.makeText(Memo_List.this, "삭제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
@@ -133,13 +131,6 @@ public class Memo_List extends AppCompatActivity {
             }
         });
 
-       // 삭제 버튼을 눌렀을 경우
-        list_delete.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                adapter.notifyDataSetChanged();
-            }
-        });
     }
 
     @Override
@@ -148,7 +139,6 @@ public class Memo_List extends AppCompatActivity {
 
         adapter.clear();
         adapter.addAll(helper.getAll());
-        // arrayAdapter에 변경되는 사항을 바로 알림-notifyDataSetChanged();
         adapter.notifyDataSetChanged();
     }
 
