@@ -38,7 +38,7 @@
         <EditText
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
-            android:layout_width="220dp"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
             android:background="#FFF56E"
             android:gravity="center_vertical"

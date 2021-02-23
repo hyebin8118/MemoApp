@@ -59,7 +59,7 @@ public class Memo_List extends AppCompatActivity {
             int id = position + 1;
 
             Bundle bundle = new Bundle();
-            bundle.putInt("id", id-1);
+            bundle.putInt("id", id);
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(Memo_List.this);
 
@@ -75,6 +75,7 @@ public class Memo_List extends AppCompatActivity {
 
                             startActivity(intent);
                             Toast.makeText(Memo_List.this, "메모를 수정하세요", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     });
 

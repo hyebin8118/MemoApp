@@ -39,7 +39,7 @@ public class Memo_AddPage extends AppCompatActivity {
         edit_body_text = findViewById(R.id.body_text);
         Button addButton = findViewById(R.id.addButton);
         Button cancelButton = findViewById(R.id.cancelButton);
-        ImageButton btn_listImage = findViewById(R.id.btn_listImage);
+        btn_listImage = findViewById(R.id.btn_listImage);
 
         helper = new Helper(this);
         Bundle bundleExtras = getIntent().getExtras();
@@ -47,17 +47,17 @@ public class Memo_AddPage extends AppCompatActivity {
         if(bundleExtras != null){
             int value = bundleExtras.getInt("id");
 
-            if(value >0){
+            if ( value > 0 ) {
                 Cursor cursor = helper.getData(value);
 
                 id = value;
 
                 cursor.moveToFirst();
 
-                String title_text = cursor.getString(cursor.getColumnIndex(Helper.DATABASE_COLUMN_TITLE_TEXT));
-                String body_text = cursor.getString(cursor.getColumnIndex(Helper.DATABASE_COLUMN_BODY_TEXT));
+                String title_text = cursor.getString(cursor.getColumnIndex(helper.DATABASE_COLUMN_TITLE_TEXT));
+                String body_text = cursor.getString(cursor.getColumnIndex(helper.DATABASE_COLUMN_BODY_TEXT));
 
-                if(!cursor.isClosed()){
+                if ( ! cursor.isClosed() ){
                     cursor.close();
                 }
 
@@ -150,7 +150,5 @@ public class Memo_AddPage extends AppCompatActivity {
                 Log.d("listAddButton", "Success");
             }
         });
-
-
     }
 }
