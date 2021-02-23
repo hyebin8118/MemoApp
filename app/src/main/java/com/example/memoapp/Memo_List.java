@@ -59,7 +59,7 @@ public class Memo_List extends AppCompatActivity {
             int id = position + 1;
 
             Bundle bundle = new Bundle();
-            bundle.putInt("id", id);
+            bundle.putInt("id", id-1);
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(Memo_List.this);
 
@@ -69,11 +69,12 @@ public class Memo_List extends AppCompatActivity {
                     .setPositiveButton("수정", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(Memo_List.this, "메모를 수정하세요", Toast.LENGTH_SHORT).show();
-
                             Intent intent = new Intent(getApplicationContext(), Memo_AddPage.class);
+                            Log.d("update","Success");
                             intent.putExtras(bundle);
+
                             startActivity(intent);
+                            Toast.makeText(Memo_List.this, "메모를 수정하세요", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -83,15 +84,15 @@ public class Memo_List extends AppCompatActivity {
                     Log.d("id",String.valueOf(id));
 
 
-                    Log.d("Database", helper.getAll().toString());
-                    // database 영역
-                    helper.delete(id);
-                    Log.d("Database", helper.getAll().toString());
-
                     // view 영역
                     Log.d("arrayList",arrayList.toString());
-                    arrayList.remove(id);
+                    arrayList.remove(id-1);
                     Log.d("arrayList",arrayList.toString());
+
+                    Log.d("Database", helper.getAll().toString());
+                    // database 영역
+                    helper.delete(id-1);
+                    Log.d("Database", helper.getAll().toString());
 
                     adapter.notifyDataSetChanged();
 
